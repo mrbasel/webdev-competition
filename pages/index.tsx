@@ -17,8 +17,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="h-full">
-        <h1 className="text-3xl text-center text-white ">Pomodoro Timer</h1>
-        <div className="flex flex-col justify-center items-center h-80">
+        <div className="flex flex-col justify-center items-center h-full">
+          <h1 className="text-3xl text-center text-white p-4 m-4">Pomodoro Timer</h1>
           <Timer />
         </div>
       </main>

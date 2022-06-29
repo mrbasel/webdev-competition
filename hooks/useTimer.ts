@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { useTimer as useTime } from "react-timer-hook";
-import { addMinutes } from "../utils/date";
+import { addMinutes, addSeconds } from "../utils/date";
 
 export type TimerState = "on" | "off" | "paused";
 
-export function useTimer(durationInMins: number) {
+export function useTimer(durationInMins: number, onExpire: () => void) {
   const [timerState, setTimerState] = useState<TimerState>("off");
+  // console.log({ durationInMins });
 
   const { minutes, seconds, isRunning, start, pause, restart, resume } =
     useTime({
-      expiryTimestamp: addMinutes(new Date(), durationInMins),
+      expiryTimestamp: addSeconds(new Date(), durationInMins),
       autoStart: false,
+      onExpire: () => {
+        onRestart();
+        onExpire();
+      },
     });
 
   const onStart = () => {
@@ -29,7 +34,7 @@ export function useTimer(durationInMins: number) {
 
   const onRestart = () => {
     setTimerState("off");
-    restart(addMinutes(new Date(), durationInMins), false);
+    restart(addSeconds(new Date(), durationInMins), false);
   };
 
   return {

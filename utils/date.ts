@@ -1,3 +1,9 @@
+export function addSeconds(date: Date, seconds: number) {
+  const newDate = new Date(date);
+  newDate.setSeconds(date.getSeconds() + seconds);
+  return newDate;
+}
+
 export function addMinutes(date: Date, minutes: number) {
   const newDate = new Date(date);
   newDate.setMinutes(date.getMinutes() + minutes);
