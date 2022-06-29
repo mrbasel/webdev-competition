@@ -4,7 +4,7 @@ import { Timer } from "../components/timer";
 
 const Home: NextPage = () => {
   return (
-    <div className="bg-bgdark h-full">
+    <div className="h-full bg-[url('../public/anime-study.gif')] bg-cover bg-blend-multiply bg-[#333] bg-center ">
       <style jsx global>{`
         body,
         #__next {
@@ -18,7 +18,9 @@ const Home: NextPage = () => {
       </Head>
       <main className="h-full">
         <div className="flex flex-col justify-center items-center h-full">
-          <h1 className="text-3xl text-center text-white p-4 m-4">Pomodoro Timer</h1>
+          <h1 className="text-3xl text-center text-white p-4 m-4">
+            Pomodoro Timer
+          </h1>
           <Timer />
         </div>
       </main>
