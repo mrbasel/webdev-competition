@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTimer as useTime } from "react-timer-hook";
 import { addMinutes } from "../utils/date";
 
-type TimerState = "on" | "off" | "paused";
+export type TimerState = "on" | "off" | "paused";
 
 export function useTimer(durationInMins: number) {
   const [timerState, setTimerState] = useState<TimerState>("off");
