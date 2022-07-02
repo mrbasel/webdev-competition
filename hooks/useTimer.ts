@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTimer as useTime } from "react-timer-hook";
 import { addMinutes, addSeconds } from "../utils/date";
 
@@ -6,7 +6,6 @@ export type TimerState = "on" | "off" | "paused";
 
 export function useTimer(durationInMins: number, onExpire: () => void) {
   const [timerState, setTimerState] = useState<TimerState>("off");
-  // console.log({ durationInMins });
 
   const { minutes, seconds, isRunning, start, pause, restart, resume } =
     useTime({
@@ -32,9 +31,14 @@ export function useTimer(durationInMins: number, onExpire: () => void) {
     resume();
   };
 
-  const onRestart = () => {
+  const onRestart = useCallback(() => {
     setTimerState("off");
     restart(addSeconds(new Date(), durationInMins), false);
+  }, [durationInMins, restart]);
+
+  const setDuration = (duration: number) => {
+    setTimerState("off");
+    restart(addSeconds(new Date(), duration), false);
   };
 
   return {
@@ -45,5 +49,6 @@ export function useTimer(durationInMins: number, onExpire: () => void) {
     onPause,
     onResume,
     onRestart,
+    setDuration,
   };
 }

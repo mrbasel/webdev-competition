@@ -4,7 +4,7 @@ import { Timer } from "../components/timer";
 
 const Home: NextPage = () => {
   return (
-    <div className="h-full bg-[url('../public/anime-study.gif')] bg-cover bg-blend-multiply bg-[#333] bg-center ">
+    <div className="h-full bg-[url('../public/rain.gif')] bg-cover bg-blend-multiply bg-[#333] bg-center ">
       <style jsx global>{`
         body,
         #__next {
